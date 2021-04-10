@@ -7,12 +7,12 @@ class EffectFactory:
     registry = {}
 
     @classmethod
-    def create_effect(cls, effect_name: str, **kwargs) -> EffectBase:
+    def create_effect(cls, effect_name: str, args) -> EffectBase:
         if effect_name not in cls.registry:
             raise ValueError(f"Effect {effect_name} does not exist")
 
         effect_class = cls.registry[effect_name]
-        effect = effect_class(**kwargs)
+        effect = effect_class(args)
 
         return effect
 

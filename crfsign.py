@@ -7,6 +7,7 @@ from sign.effects import *
 
 from discord.commands.sign_control import SignControl
 from sign.opc_control import OpcControl
+from sign.sign import Sign
 
 with open('config.json', 'r') as f:
     config = json.load(f)
@@ -28,6 +29,7 @@ async def on_ready():
 
 bot.message_queue = queue.Queue()
 
+bot.add_cog(Sign())
 bot.add_cog(SignControl(bot))
 bot.add_cog(OpcControl(bot, config['opc_address']))
 
